@@ -1,9 +1,9 @@
 // Задача 4. Напишіть функцію-обгортку, яка кешуватиме результат будь-якої іншої функції з довільною кількістю параметрів.
-const wrapper = (func: Function): string => {
+const wrapper = (func: Function): Function => {
     // Ініціалізуємо об'єкт cache
     const cache: object = {};
 
-    return (...args) => {
+    return (...args: number[]): string => {
         // Конвертуємо аргументи у JSON строку
         const key: string = JSON.stringify(args);
 
