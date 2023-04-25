@@ -1,7 +1,12 @@
 // Задача 4. Напишіть функцію-обгортку, яка кешуватиме результат будь-якої іншої функції з довільною кількістю параметрів.
 const wrapper = (func: Function): Function => {
+    
+    interface ICache {
+        [key: string]: string;
+    }
+
     // Ініціалізуємо об'єкт cache
-    const cache: object = {};
+    const cache: ICache = {};
 
     return (...args: number[]): string => {
         // Конвертуємо аргументи у JSON строку
@@ -21,7 +26,7 @@ const wrapper = (func: Function): Function => {
     };
 };
 
-const calc = (a, b, c) => a+b+c;
+const calc = (a: number, b: number, c: number) => a+b+c;
 
 const cachedCalc = wrapper(calc);
 console.log(cachedCalc(2,2,3)); // 7 calculated
